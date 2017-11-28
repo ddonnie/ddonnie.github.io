@@ -1,0 +1,146 @@
+
+body {
+    background: #212121;
+    line-height: 1.6em;
+}
+
+.row-container {
+    padding: 10px; 
+}
+
+.left-column {
+    width: 12%;
+    display: inline-block;
+    vertical-align:top;
+}
+.central-column {
+    width: 75%;
+    display: inline-block;
+    vertical-align:top;
+}
+.right-column {
+    display:inline-block;
+    vertical-align:top;
+}
+
+
+#page-content {
+    width: 85%;
+    margin: 0 auto;
+}
+#header:after {
+    content: '';
+    display: block;  
+    height: 5px;
+    margin: 0 auto;    
+    border: 3px dashed #ed534f;
+    border-top: 3px dashed #fabe58;
+    border-left: none;
+    border-right: none;
+
+}
+
+#page-title h1 {
+    font-family: 'Poppins';
+    font-size: 32px;
+    font-weight: 900;
+    color: #ed534f;   
+}
+#question-sign a {
+    padding: 2px 12px;
+    font-family: 'Poppins';
+    font-size: 24px;
+    font-weight: 900;
+    color: #212121;
+    background: #ed534f;
+    border-radius: 50%;
+    transition: background .6s;
+    text-decoration: none;
+}
+#question-sign a:hover {
+    background: #cc4a4c;
+}
+#page-title {
+    width: 49%;
+    display: inline-block;   
+    text-align: left;
+}
+#question-sign {
+    width: 49%;
+    display: inline-block;
+    text-align: right;
+}
+
+#information-field {
+    font-family: 'Roboto Mono';
+    font-size: 12px;
+    color: #ed534f;
+    text-transform: uppercase;
+}
+#id-output,#date-output {
+    color: #cc4a4c; 
+    padding: 5px;
+}
+#secret-key,#secret-date {
+    border: 1px solid #cc4a4c;
+    padding: 5px;
+}
+
+
+#screen-output {
+    font-size: 3px;
+    color: #fabe58;
+    background: none;
+    border: 4px double #ed534f;
+}
+
+
+
+
+#controlPanel {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#controlPanel li {
+    padding-bottom: 5px;
+}
+.control-button {
+    font-family: 'Roboto Mono';
+    font-size: 12px;
+    color: #ed534f;
+    background: none;
+    border: 1px solid #ed534f;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    width: 100%;
+
+}
+.control-button:hover {
+    color: #212121;
+    background: #ed534f;  
+}
+#powerButton.pressed {
+    color: #212121;
+    background: #ed534f;      
+}
+#powerButton.pressed:hover {
+    color: #212121;
+    background: #cc4a4c;      
+}
+
+
+
+@media screen and (min-width:1920px) {
+    .central-column {
+        width: 55%;
+    }
+    #controlPanel li {
+        display: inline-block;
+    }
+    .control-button {
+
+    }
+}
+
+

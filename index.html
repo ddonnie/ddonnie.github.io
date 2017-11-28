@@ -1,0 +1,60 @@
+<html>
+    
+<head>
+<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    
+<link rel="stylesheet" href="css/style.css" >
+
+<script src="js/script.js"></script>
+        
+</head>
+<body>
+    <div id="page-content">
+        <div id="header" class="row-container">
+            <div id="page-title">
+                <h1>HETI Subspace Radar</h1>    
+            </div>
+            <div id="question-sign">
+                <a href="#">?</a>
+            </div>
+        </div>
+        
+        <div id="information-field" class="row-container">
+            <div class="left-column"><span>Текущая ситуация:</span></div>
+            <div class="central-column">
+                <div id="information-console">
+                    <span id="secret-key">СЕКРЕТНЫЙ КЛЮЧ</span>
+                    <span id="id-output">no data</span>
+                    <span id="secret-date">ДАТА</span> 
+                    <span id="date-output">no data</span>
+                </div>
+            </div>
+            <div class="right-column">
+                <div id="counterPanel">
+                    <span>Найдено:</span><span id="found-numbers">__</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row-container">
+            <div class="left-column">
+                <div id="invaders-table"></div>
+            </div>
+            <div class="central-column">
+                <textarea id="screen-output" rows="151" cols="405"></textarea>
+            </div>
+            <div class="right-column">
+                <ul id="controlPanel">
+                    <li><button id="powerButton"   class="control-button">вкл</button></li>
+                    <li><button id="searchButton"  class="control-button">поиск</button></li>
+                    <li><button id="modeButton"    class="control-button">режим</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+</body>
+    
+</html>
