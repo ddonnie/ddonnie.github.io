@@ -17,21 +17,28 @@ function screenPowerOn() {
 }
 function screenPowerOff() {
     powerButton.innerText = 'вкл';
+    var powerText = document.getElementById("powerPanel");
+    powerText.innerHTML = "Ожидание";
     powerButton.classList.remove('pressed');
     powerButton.onclick = screenPowerOn;
     document.getElementById("screen-output").innerHTML = '';
+    document.getElementById("id-output").innerHTML = 'NO DATA';
+    document.getElementById("date-output").innerHTML = 'NO DATA';
     clearInterval(powerScreenOn);
 }
 function getMap() {
       var xhttp = new XMLHttpRequest();
+      var powerText = document.getElementById("powerPanel");
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+            powerText.innerHTML = "Получение данных";
             var json_map = JSON.parse(this.responseText);
             document.getElementById("id-output").innerHTML = json_map.id;
             document.getElementById("date-output").innerHTML = new Date(json_map.date);
             document.getElementById("screen-output").innerHTML = json_map.map;
-
-        }
+        } else if (this.readyState == 4 && this.status != 200 ) {        
+            powerText.innerHTML = "Блокируется";
+        };
       };
       xhttp.open("GET", "http://radar.lafox.net/api/getMap", true);
       xhttp.send();

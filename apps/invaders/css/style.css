@@ -94,7 +94,13 @@ body {
     border: 4px double #ed534f;
 }
 
+#powerPanel {
+    animation: blinker 1s linear infinite;
+}
 
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
 
 
 #controlPanel {
@@ -114,6 +120,7 @@ body {
     text-transform: uppercase;
     padding: 10px 15px;
     width: 100%;
+    transition: background .2s;
 
 }
 .control-button:hover {
@@ -142,5 +149,3 @@ body {
 
     }
 }
-
-
