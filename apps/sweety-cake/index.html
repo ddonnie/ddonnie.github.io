@@ -10,13 +10,13 @@
     </style>
 </head>
 <body style='margin : 0px; overflow: hidden;'>
-    <a-scene embedded arjs='trackingMethod: best; debugUIEnabled:false'>
+    <a-scene embedded arjs='trackingMethod: best; debugUIEnabled:false; sourceType: webcam;'>
         
         <a-assets>
             <a-asset-item id="cupcake" src="models/scene.gltf"></a-asset-item>
         </a-assets>
-        
-        <a-marker preset='custom' type='pattern' url='data/lovely.patt'>>
+            
+        <a-marker preset='custom' type='pattern' url='data/thinlovely.patt'>>
                 <a-gltf-model id="cake" scale=".05 .05 .05" position="0 0.5 0" src="#cupcake">
                     <a-animation position="0 0 0" attribute="rotation" fill="forwards" easing="linear" dur="18000" from="0 0 0" to="0 360 0" repeat="indefinite"></a-animation>
                 </a-gltf-model> 
