@@ -1,27 +1,19 @@
-<!doctype HTML>
-<html>
-<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"> </script>
-<style>
-    #arjsDebugUIContainer {
-        display: none;
-    }    
-</style>
+<head>
+  <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+
+  <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+</head>
 <body style='margin : 0px; overflow: hidden;'>
-    <a-scene embedded arjs>
-        
+    <a-scene embedded arjs='trackingMethod: best; debugUIEnabled:false'>
         <a-assets>
-            <a-asset-item id="cupcake" src="./models/scene.gltf"></a-asset-item>
-        </a-assets>
-        
-        <a-marker type='pattern' patternUrl='data/pattern-marker.patt'>
-                <a-gltf-model id="cake" scale=".05 .05 .05" position="0 0.5 0" src="#cupcake">
-                    <a-animation position="0 0 0" attribute="rotation" fill="forwards" easing="linear" dur="18000" from="0 0 0" to="0 360 0" repeat="indefinite"></a-animation>
-                </a-gltf-model> 
-        </a-marker >
-        
-        <a-entity camera></a-entity>
-            
+            <a-asset-item id="tree-model" src="https://raw.githubusercontent.com/TimVanMourik/ChristmasAR/master/data/Tree.dae" crossOrigin="anonymous"></a-asset-item>
+            <a-asset-item id="text-model" src="https://raw.githubusercontent.com/TimVanMourik/ChristmasAR/master/data/MerryChristmas.dae" crossOrigin="anonymous"></a-asset-item>
+       </a-assets>
+        <a-marker preset='custom' type='pattern' url='https://raw.githubusercontent.com/TimVanMourik/Armadillo/master/app/armadillo/static/img/patt/pattern-marker.patt'>
+<---display first model     --->
+<a-entity collada-model="#tree-model"></a-entity>
+
+         </a-marker>
+         <a-entity camera></a-entity>
     </a-scene>
 </body>
-</html>
