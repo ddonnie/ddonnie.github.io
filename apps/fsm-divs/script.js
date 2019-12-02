@@ -24,7 +24,7 @@ class Vector2D {
     }
 }
 
-class Object {
+class drawingObject {
 
     constructor(x, y, id) {
         if (x == undefined) {
@@ -60,18 +60,20 @@ class Object {
     }
 }
 
-class Worker extends Object {
+class Worker extends drawingObject {
     constructor(x, y, id) {
         super(x, y, id);
         this.direction = new Vector2D(0, 0);
-        this.speed = 1;
+        this.speed = 2;
         this.load;
     }
 
     animate() {
         if (this.load == undefined) {
+            this.speed = 2;
             this.findApple();
         } else {
+            this.speed = .5;
             this.carryApple();
         }
     }
@@ -87,7 +89,7 @@ class Worker extends Object {
     findApple() {
         let closestApple;
         let closestAppleDistance;
-        let apples = window.appleFactory.apples;
+        let apples = window.adFactory.ads;
 
         for (let i = 0; i < apples.length; i++) {
             if (apples[i] instanceof Apple &&
@@ -102,7 +104,7 @@ class Worker extends Object {
                     closestAppleDistance = distance;
                     closestApple = apples[i];
                 }
-                if (distance < closestApple.objectRect.clientWidth + this.objectRect.clientWidth) {
+                if (distance < this.objectRect.clientWidth/2) {
                     this.takeApple(closestApple);
                 }
             }
@@ -157,12 +159,12 @@ class Worker extends Object {
     }
 }
 
-class Fire extends Object {
+class Fire extends drawingObject {
     constructor(x, y) {
         super(x, y, 0);
     }
     grow() {
-        this.objectRect.children[0].width += 5;
+        this.objectRect.children[0].width += 12;
     }
     draw() {
         let wrapper = document.createElement('div');
@@ -182,7 +184,7 @@ class Fire extends Object {
     }
 }
 
-class Apple extends Object {
+class Apple extends drawingObject {
     constructor(x, y, id) {
         super(x, y, id);
         this.isAtFire= false;
@@ -196,6 +198,34 @@ class Apple extends Object {
         } else {
             return false;
         }
+    }
+}
+
+class Ad extends Apple {
+    constructor(x, y, id) {
+        super(x, y, id);
+    }
+    draw() {
+        let wrapper = document.createElement('div');
+        document.getElementById("drawer").appendChild(wrapper);
+        wrapper.id = this.id;
+        wrapper.className = this.class;
+        wrapper.style.position = 'absolute';
+        wrapper.style.left = this.position.x;
+        wrapper.style.top = this.position.y;
+
+        let ad = document.createElement('div');
+        ad.innerHTML = `
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:300px;height:300px"
+                data-ad-client="ca-pub-6163857992956964"
+                data-ad-slot="5281847489"></ins>
+        `;
+        document.getElementById(wrapper.id).appendChild(ad);
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        
+
+        this.objectRect = wrapper;   
     }
 }
 
@@ -223,9 +253,21 @@ class appleFactory {
     }
 }
 
-function initObjects() {
+class adFactory {
+    constructor() {
+        this.adCounter = 0;
+        this.ads = [];
+    }
+    createAd(x, y) {
+        let ad = new Ad(x, y, this.adCounter++);
+        this.ads.push(ad);
+        return ad;
+    }
+}
+
+function initdrawingObjects() {
     window.workerFactory = new workerFactory();
-    window.appleFactory = new appleFactory();
+    window.adFactory = new adFactory();
     window.fire = new Fire(200,200);
 
     window.workerFactory.createWorker();
@@ -233,15 +275,15 @@ function initObjects() {
     window.workerFactory.createWorker();
 }
 
-function drawObjects() {
+function drawdrawingObjects() {
     window.workerFactory.workers.forEach(function (worker) {
         worker.draw();
     });
     window.fire.draw();
 }
 
-function animateObjects() {
-    window.appleFactory.apples = window.appleFactory.apples.filter(function (value, index, arr) {
+function animatedrawingObjects() {
+    window.adFactory.apples = window.adFactory.ads.filter(function (value, index, arr) {
         return value.isAtFire != true;
     });
 
@@ -252,16 +294,16 @@ function animateObjects() {
 
 
 addEventListener('click', function (e) {
-    window.appleFactory.createApple(e.clientX, e.clientY).draw();
+    window.adFactory.createAd(e.clientX, e.clientY).draw();
 });
 
 
-initObjects();
-drawObjects();
+initdrawingObjects();
+drawdrawingObjects();
 
 while (true) {
     setInterval(function () {
-        animateObjects();
+        animatedrawingObjects();
     }, 0);
     break;
 }

@@ -1,17 +1,29 @@
 <html>
 
 <head>
-    <script data-ad-client="ca-pub-5797763045309148" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script data-ad-client="ca-pub-5797763045309148" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153696462-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-153696462-1');
+    </script>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
     <style>
-        body, html {
+        body,
+        html {
             margin: 0;
             width: 100%;
             height: 100%;
         }
+
         #drawer {
             width: 100vw;
             height: 100vh;
@@ -21,13 +33,19 @@
             background-image: url(https://i.pinimg.com/originals/5b/31/d8/5b31d8709b8b12767cb1f1edfd214899.jpg);
             background-repeat: repeat;
         }
+
         .Worker {
             z-index: 2;
         }
-        .Fire {
-            position: relative;
+
+        .Ad {
+            background-color: #fff;
+            z-index: 3;
         }
-        .Apple img, .Worker img{
+
+        .Apple img,
+        .Worker img,
+        .Fire img {
             -moz-user-select: none;
             -webkit-user-drag: none;
             -webkit-user-select: none;
