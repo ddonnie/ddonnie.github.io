@@ -242,7 +242,7 @@ function drawObjects() {
 
 function animateObjects() {
     window.appleFactory.apples = window.appleFactory.apples.filter(function (value, index, arr) {
-        return value.isAtBase != true;
+        return value.isAtFire != true;
     });
 
     window.workerFactory.workers.forEach(function (worker) {
