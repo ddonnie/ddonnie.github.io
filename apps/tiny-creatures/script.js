@@ -1,6 +1,8 @@
 const MAX_DISTANCE = 50;
 const RUNNING_DISTANCE = 100;
 
+let bloodLevel = 0;
+
 
 let tinies = [];
 
@@ -33,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
     tinies = convertLetters(letters);
     tinies.forEach((tiny) => {
         tiny.addEventListener('mouseover', () => {
+            bloodLevel = Math.floor(document.querySelectorAll('.tiny_dead').length / 10);
+            bloodLevel = bloodLevel > 6 ? 6 : bloodLevel;
+            document.body.style.setProperty('cursor', 'url("./images/cursor/' + bloodLevel + '.png"), auto');
             tiny.classList.add('tiny_dead');
         });
     });

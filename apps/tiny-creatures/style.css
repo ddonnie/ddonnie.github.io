@@ -1,3 +1,7 @@
+body {
+    cursor: url('./images/cursor/0.png'), auto;
+}
+
 .tiny {
     transition: all 2s;
 }
