@@ -38,6 +38,11 @@ function placeBlood(x, y) {
     body.appendChild(blood);
 }
 
+function updateBloodPicture() {
+    const bloodPicture = Math.min(6, Math.floor(bloodLevel / 10) + 1);
+    document.body.style.setProperty('cursor', 'url("./images/cursor/' + bloodPicture + '.png"), auto');
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
     body = document.getElementsByTagName('body')[0];
@@ -45,9 +50,8 @@ document.addEventListener('DOMContentLoaded', function() {
     tinies = convertLetters(letters);
     tinies.forEach((tiny) => {
         tiny.addEventListener('mouseover', () => {
-            bloodLevel = Math.floor(document.querySelectorAll('.tiny_dead').length / 10);
-            bloodLevel = bloodLevel > 6 ? 6 : bloodLevel;
-            document.body.style.setProperty('cursor', 'url("./images/cursor/' + bloodLevel + '.png"), auto');
+            bloodLevel += 1;
+            updateBloodPicture();
             tiny.classList.add('tiny_dead');
         });
     });
@@ -57,6 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
 const onMouseMove = (event) => {
     const x = event.clientX;
     const y = event.clientY;
+    bloodLevel = Math.max(0, bloodLevel - 0.2);
+    updateBloodPicture();
     const bloodChance = Math.random() * 0.1 * bloodLevel;
     if (bloodChance > 0.4) {
         placeBlood(x, y);

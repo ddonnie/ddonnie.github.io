@@ -1,5 +1,6 @@
 body {
     cursor: url('./images/cursor/0.png'), auto;
+    user-select: none;
 }
 
 .tiny {
