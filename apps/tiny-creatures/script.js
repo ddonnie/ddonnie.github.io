@@ -1,6 +1,6 @@
 const MAX_DISTANCE = 50;
 const RUNNING_DISTANCE = 100;
-
+const BODY = document.getElementsByTagName('body')[0];
 let bloodLevel = 0;
 
 
@@ -36,6 +36,7 @@ function placeBlood(x, y) {
     blood.style.setProperty('font-size', Math.random() * 20 + 20 + 'px');
     blood.classList.add('blood');
     blood.innerText = '.';
+    BODY.appendChild(blood);
 }
 
 
