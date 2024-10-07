@@ -29,6 +29,15 @@ function convertLetters(letters) {
     return tinies;
 }
 
+function placeBlood(x, y) {
+    const blood = document.createElement('span');
+    blood.style.setProperty('left', x + 'px');
+    blood.style.setProperty('top', y + 'px');
+    blood.style.setProperty('font-size', Math.random() * 20 + 20 + 'px');
+    blood.classList.add('blood');
+    blood.innerText = '.';
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const letters = document.getElementById('letters');
@@ -47,6 +56,10 @@ document.addEventListener('DOMContentLoaded', function() {
 const onMouseMove = (event) => {
     const x = event.clientX;
     const y = event.clientY;
+    const bloodChance = Math.random() * 0.1 * bloodLevel;
+    if (bloodChance > 0.7) {
+        placeBlood(x, y);
+    }
     tinies.forEach((tiny) => {
         const tinyX = tiny.getBoundingClientRect().x;
         const tinyY = tiny.getBoundingClientRect().y;

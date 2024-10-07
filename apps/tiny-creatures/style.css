@@ -20,3 +20,8 @@ body {
     opacity: 1;
     transition: all 1s;
 }
+
+.blood {
+    position: absolute;
+    color: red;
+}
