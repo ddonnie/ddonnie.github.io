@@ -1,9 +1,8 @@
 const MAX_DISTANCE = 50;
 const RUNNING_DISTANCE = 100;
-const BODY = document.getElementsByTagName('body')[0];
+
+let body = null;
 let bloodLevel = 0;
-
-
 let tinies = [];
 
 Math.distance = function(x1, y1, x2, y2) {
@@ -36,11 +35,12 @@ function placeBlood(x, y) {
     blood.style.setProperty('font-size', Math.random() * 20 + 20 + 'px');
     blood.classList.add('blood');
     blood.innerText = '.';
-    BODY.appendChild(blood);
+    body.appendChild(blood);
 }
 
 
 document.addEventListener('DOMContentLoaded', function() {
+    body = document.getElementsByTagName('body')[0];
     const letters = document.getElementById('letters');
     tinies = convertLetters(letters);
     tinies.forEach((tiny) => {
@@ -58,7 +58,7 @@ const onMouseMove = (event) => {
     const x = event.clientX;
     const y = event.clientY;
     const bloodChance = Math.random() * 0.1 * bloodLevel;
-    if (bloodChance > 0.7) {
+    if (bloodChance > 0.4) {
         placeBlood(x, y);
     }
     tinies.forEach((tiny) => {
